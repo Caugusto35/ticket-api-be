@@ -20,9 +20,9 @@ export class TicketController {
         return { data: list };
     }
 
-    @Get(':ticket')
-    public async getOne(@Param('ticket') ticket: string): Promise<{ data: TicketModel }> {
-        const ticketOne = await this.model.findOne({ where: { ticket } })
+    @Get(':cpf')
+    public async getOne(@Param('cpf') cpf: string): Promise<{ data: TicketModel }> {
+        const ticketOne = await this.model.findOne({ where: { cpf } })
         return { data: ticketOne };
     }
 
