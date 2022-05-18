@@ -14,9 +14,15 @@ export class TicketController {
         return { data: ticketCreated };
     }
 
+    @Get('')
+    public async getAll(): Promise<{ data: TicketModel[] }> {
+        const list = await this.model.find();
+        return { data: list };
+    }
+
     @Get(':cpf')
-    public async getAll(@Param('cpf') cpf: string): Promise<{ data: TicketModel }> {
-        const ticketOne = await this.model.findOne({ where: { cpf } })
+    public async get(@Param('cpf') cpf: string): Promise<{ data: TicketModel[] }> {
+        const ticketOne = await this.model.find({ where: { cpf } })
         return { data: ticketOne };
     }
 
